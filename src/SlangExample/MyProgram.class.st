@@ -14,6 +14,23 @@ MyProgram class >> ancilliaryClasses [
 	^ super ancilliaryClasses, { MyStackElement . MyStack }
 ]
 
+{ #category : #configuration }
+MyProgram class >> declareCVarsIn: aCCodeGenerator [
+
+	"Example of compile time conditional header"
+
+	"A header in quoted form works like this."	
+	aCCodeGenerator addHeaderFile: '#if CONDITIONAL_HEADER'.
+	aCCodeGenerator addHeaderFile: '"conditional_header.h"'.
+	aCCodeGenerator addHeaderFile: '#endifif //CONDITIONAL_HEADER'.
+	
+	"A header in angle-bracket form needs to be specified in a single string.
+	Otherwise slang sorts headers and removes it from the conditional definition."
+	aCCodeGenerator addHeaderFile: '#if CONDITIONAL_HEADER
+#include <conditional_header.h>
+#endifif //CONDITIONAL_HEADER'.
+]
+
 { #category : #'api-translation' }
 MyProgram class >> exportTo: aFileReference [
 
