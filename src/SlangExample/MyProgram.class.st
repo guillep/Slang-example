@@ -5,6 +5,7 @@ I am the main entry point of the slang example. I show off:
  - typing: variable types, argument types, return types, default types
  - definition of headers and conditional headers
  - selector mangling
+ - some inlining examples
 "
 Class {
 	#name : #MyProgram,
@@ -89,14 +90,10 @@ MyProgram >> main [
 	
 	"So it gets correctly ignored.
 	If we define it at the class level, this breaks slang"
-	<var: #stdlib type: #implicit>
 	<var: #stdio type: #implicit>
 	
 	| stack format |
-	stack := stdlib malloc: (self sizeof: MyStack).
-	stack init.
-	stack push: 7.
-	stack push: 32.
+	stack := self setupStack: 6.
 	
 	"Example of a compile-time option"
 	self
@@ -123,4 +120,26 @@ MyProgram >> printTwice: aValue format: aFormat [
 	<var: #stdio type: #implicit>
 
 	stdio printf: aFormat _: aValue
+]
+
+{ #category : #accessing }
+MyProgram >> setupStack: size [	
+	"Saying nothing, this method will be inlined in the caller."
+	
+	<var: #stack type: 'MyStack*'>
+	
+	"So it gets correctly ignored.
+	If we define it at the class level, this breaks slang"
+	<var: #stdlib type: #implicit>
+	
+	| stack elem |
+	stack := stdlib malloc: (self sizeof: MyStack).
+	stack init.
+
+	elem := 2.
+	1 to: size do: [ :i |
+		stack push: elem.
+		elem := elem * elem.
+	].
+	^ stack
 ]

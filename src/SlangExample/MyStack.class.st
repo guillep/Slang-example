@@ -46,6 +46,10 @@ MyStack >> pop [
 { #category : #adding }
 MyStack >> push: aValue [
 	<var: #stackElement type: 'MyStackElement *'>
+
+	"Not saying anything, this method should be inlined by default.
+	However, types are not correctly and generation breaks if inline removed (default) or set to true or #always"
+	<inline: false>
 	
 	"So it gets correctly ignored.
 	If we define it at the class level, this breaks slang"
