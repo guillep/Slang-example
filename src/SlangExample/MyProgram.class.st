@@ -30,13 +30,13 @@ MyProgram class >> declareCVarsIn: aCCodeGenerator [
 	"A header in quoted form works like this."	
 	aCCodeGenerator addHeaderFile: '#if CONDITIONAL_HEADER'.
 	aCCodeGenerator addHeaderFile: '"conditional_header.h"'.
-	aCCodeGenerator addHeaderFile: '#endifif //CONDITIONAL_HEADER'.
+	aCCodeGenerator addHeaderFile: '#endif //CONDITIONAL_HEADER'.
 	
 	"A header in angle-bracket form needs to be specified in a single string.
 	Otherwise slang sorts headers and removes it from the conditional definition."
 	aCCodeGenerator addHeaderFile: '#if CONDITIONAL_HEADER
 #include <conditional_header.h>
-#endifif //CONDITIONAL_HEADER'.
+#endif //CONDITIONAL_HEADER'.
 ]
 
 { #category : #'api-translation' }
@@ -114,6 +114,13 @@ MyProgram >> main [
 
 { #category : #accessing }
 MyProgram >> printTwice: aValue format: aFormat [
+	<inline: false>
 	<option: #GENERATION_TIME_PRINT_TWICE>
+	<var: #aFormat type: 'char*'>
+	
+	"So it gets correctly ignored.
+	If we define it at the class level, this breaks slang"
+	<var: #stdio type: #implicit>
+
 	stdio printf: aFormat _: aValue
 ]

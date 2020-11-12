@@ -19,7 +19,5 @@ SlStdio class >> declareCVarsIn: aCCodeGenerator [
 SlStdio >> printf: format _: argument [
 
 	<doNotGenerate>
-	<var: #format type: 'const char *'>
-	<returnTypeC: 'int'>
 	^ (format printf: { argument }) size
 ]

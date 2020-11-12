@@ -19,7 +19,5 @@ SlStdlib class >> declareCVarsIn: aCCodeGenerator [
 SlStdlib >> malloc: size [
 
 	<doNotGenerate>
-	<var: #size type: 'size_t'>
-	<returnTypeC: 'void*'>
 	"void * malloc(size_t size);"
 ]
