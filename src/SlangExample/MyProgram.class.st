@@ -1,3 +1,11 @@
+"
+I am the main entry point of the slang example. I show off:
+ - compile time options
+ - generation time options
+ - typing: variable types, argument types, return types, default types
+ - definition of headers and conditional headers
+ - selector mangling
+"
 Class {
 	#name : #MyProgram,
 	#superclass : #ExtractedSuperclass,

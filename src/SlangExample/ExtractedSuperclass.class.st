@@ -1,3 +1,6 @@
+"
+I'm an abstract example class defining the #stdio and #stdlib instance variables through a trait.
+"
 Class {
 	#name : #ExtractedSuperclass,
 	#superclass : #SlangClass,
@@ -9,20 +12,4 @@ Class {
 ExtractedSuperclass class >> ancilliaryClasses [
 
 	^ { SlStdlib . SlStdio }
-]
-
-{ #category : #translation }
-ExtractedSuperclass class >> declareCVarsIn: aCCodeGenerator [
-
-	super declareCVarsIn: aCCodeGenerator.
-"	aCCodeGenerator declareVar: 'stdio' type: #implicit.
-	aCCodeGenerator declareVar: 'stdlib' type: #implicit"
-]
-
-{ #category : #initialization }
-ExtractedSuperclass >> initialize [
-
-	super initialize.
-	stdio := SlStdio new.
-	stdlib := SlStdlib new
 ]

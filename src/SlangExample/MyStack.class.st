@@ -1,3 +1,6 @@
+"
+I am an example struct showing how a struct is defined and how behavior can be put in it.
+"
 Class {
 	#name : #MyStack,
 	#superclass : #ExtractedStruct,

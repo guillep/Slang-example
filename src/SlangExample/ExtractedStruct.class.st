@@ -1,3 +1,6 @@
+"
+I'm an abstract example struct defining the #stdio and #stdlib instance variables through a trait.
+"
 Class {
 	#name : #ExtractedStruct,
 	#superclass : #SlangStructType,
@@ -9,14 +12,6 @@ Class {
 ExtractedStruct class >> baseStructClass [
 
 	^ ExtractedStruct
-]
-
-{ #category : #translation }
-ExtractedStruct class >> declareCVarsIn: aCCodeGenerator [
-
-	super declareCVarsIn: aCCodeGenerator.
-"	aCCodeGenerator declareVar: 'stdio' type: #implicit.
-	aCCodeGenerator declareVar: 'stdlib' type: #implicit"
 ]
 
 { #category : #translation }

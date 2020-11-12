@@ -1,3 +1,6 @@
+"
+I am a helper stateful trait defining the #stdio and #stdlib variables
+"
 Trait {
 	#name : #TStdClass,
 	#instVars : [

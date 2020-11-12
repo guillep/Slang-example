@@ -1,3 +1,6 @@
+"
+I am an example struct showing how a recursive struct is defined (a stack element can reference another stack element).
+"
 Class {
 	#name : #MyStackElement,
 	#superclass : #ExtractedStruct,
