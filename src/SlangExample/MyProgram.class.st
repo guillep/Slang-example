@@ -63,7 +63,7 @@ MyProgram class >> exportTo: aFileReference [
 	cg addStructClasses: structClasses.
 	translationClasses do: [ :ic | cg addClass: ic.  ].
 
-	cg inferTypesForImplicitlyTypedVariablesAndMethods.
+	cg inferTypes.
 
 	cg storeCodeOnFile: aFileReference doInlining: false.
 ]
